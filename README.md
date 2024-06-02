@@ -2,6 +2,8 @@
 
 This mobile application is the project built in the process of understanding, learning and implementing Native Android Module for React Native. Alarm Manager and Notification Manager of Native Android Module is integrated in the application for setting reminder for tasks and receiving corresponding notifications.
 
+The application uses firebase for storing the meta-data of tasks, you can [configure firebase](https://rnfirebase.io/#2-react-native-cli---android-setup "React Native CLI - Android Setup") to run the project 
+
 ## Screenshots of the app
 <div align="center">
 <img width="30%" alt="Screenshot_42" src="https://github.com/Amit250/ToDoReminderApp/assets/58304052/ff0ccf5a-e9da-4524-9339-958220615b1c.png">
