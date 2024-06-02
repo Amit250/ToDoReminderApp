@@ -75,7 +75,10 @@ export default function CreateItemScreen({ navigation }) {
         Completed: false,
       })
 
-    AlarmModule.createAlarmEvent((date.getTime() - Date.now()).toString(), task)
+    AlarmModule.createAlarmEvent(
+      Math.ceil((date.getTime() - Date.now()) / 1000).toString(),
+      task
+    )
     navigation.goBack()
   }
   return (

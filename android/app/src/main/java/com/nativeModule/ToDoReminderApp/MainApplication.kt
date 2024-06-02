@@ -1,7 +1,11 @@
 package com.nativeModule.ToDoReminderApp
 
 import android.app.Application
+import android.app.NotificationChannel
+import android.app.NotificationManager
+import android.content.Context
 import android.content.res.Configuration
+import android.os.Build
 
 import com.facebook.react.PackageList
 import com.facebook.react.ReactApplication
@@ -14,6 +18,7 @@ import com.facebook.react.bridge.ReactContext
 import com.facebook.react.defaults.DefaultNewArchitectureEntryPoint.load
 import com.facebook.react.defaults.DefaultReactNativeHost
 import com.facebook.soloader.SoLoader
+import com.nativeModule.ToDoReminderApp.notification.NotificationService
 
 import expo.modules.ApplicationLifecycleDispatcher
 import expo.modules.ReactNativeHostWrapper
@@ -51,7 +56,11 @@ class MainApplication : Application(), ReactApplication {
       load()
     }
     ApplicationLifecycleDispatcher.onApplicationCreate(this)
+
+    // for holding ReactApplicationContext adn ReactContext
     initializeReactContextHolder()
+    // for creating notification channel
+    createNotificationChannel()
   }
 
   override fun onConfigurationChanged(newConfig: Configuration) {
@@ -73,6 +82,19 @@ class MainApplication : Application(), ReactApplication {
     // Initialize the ReactContextHolder with the current react context if it is already available
     reactInstanceManager.currentReactContext?.let { currentReactContext ->
       ReactContextHolder.initialize(currentReactContext as ReactApplicationContext, currentReactContext)
+    }
+  }
+
+  private fun createNotificationChannel(){
+    if ( Build.VERSION.SDK_INT >= Build.VERSION_CODES.O){
+      val channel = NotificationChannel(
+        NotificationService.CHANNEL_ID,
+        "Task Reminder",
+        NotificationManager.IMPORTANCE_HIGH
+      )
+      channel.description = "Little reminder from your list of tasks"
+      val notificationManager = getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
+      notificationManager.createNotificationChannel(channel)
     }
   }
 

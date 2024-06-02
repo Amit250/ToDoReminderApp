@@ -16,4 +16,5 @@ class EventModule(private  val reactAppContext: ReactApplicationContext) : React
             .emit(eventName, params)
         Toast.makeText(reactAppContext,"Event has been emitted!", Toast.LENGTH_SHORT).show()
     }
+
 }

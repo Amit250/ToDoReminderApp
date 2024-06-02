@@ -8,6 +8,8 @@ import com.facebook.react.ReactActivityDelegate
 import com.facebook.react.bridge.ReactApplicationContext
 import com.facebook.react.defaults.DefaultNewArchitectureEntryPoint.fabricEnabled
 import com.facebook.react.defaults.DefaultReactActivityDelegate
+import com.nativeModule.ToDoReminderApp.notification.NotificationService
+import com.nativeModule.ToDoReminderApp.notification.NotificationServiceManager
 
 import expo.modules.ReactActivityDelegateWrapper
 
@@ -18,6 +20,9 @@ class MainActivity : ReactActivity() {
     // This is required for expo-splash-screen.
     setTheme(R.style.AppTheme);
     super.onCreate(null)
+
+      NotificationServiceManager.initialize(applicationContext)
+
   }
 
   /**

@@ -9,7 +9,7 @@ import android.widget.Toast
 class NotificationReceiver: BroadcastReceiver() {
 
     override fun onReceive(context: Context, intent: Intent?) {
-        val service = NotificationService(context)
+//        val service = NotificationService(context)
         Toast.makeText(context,"The task has been done",Toast.LENGTH_SHORT).show()
     }
 }

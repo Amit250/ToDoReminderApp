@@ -27,6 +27,7 @@ const HomeScreen = ({ navigation }) => {
 
     let eventListener = eventEmitter.addListener('EventReminder', (event) => {
       console.log(event.eventProperty)
+      AlarmModule.showNotificationEvent(event.eventProperty)
     })
 
     // Removes the listener once unmounted
